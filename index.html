@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10172a">
+  <meta name="description" content="Live weather dashboard with current conditions for Indian cities.">
+  <title>Atmos — Weather Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="dashboard">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Atmos home">
+        <span class="brand-icon">☀</span>
+        <span>atmos<span class="brand-dot">.</span></span>
+      </a>
+      <span class="live-badge"><span class="live-dot"></span> LIVE WEATHER</span>
+    </header>
+
+    <section class="intro">
+      <p class="eyebrow">YOUR WEATHER, SIMPLIFIED</p>
+      <h1>Weather <span>at a glance.</span></h1>
+      <p class="subtitle">Real-time conditions for the places that matter to you.</p>
+    </section>
+
+    <section class="location-bar">
+  <div class="location-label">
+    <span class="location-icon">⌖</span>
+
+    <div class="city-search">
+      <label for="citySearch">YOUR LOCATION</label>
+      <input
+        id="citySearch"
+        type="text"
+        placeholder="Search any city worldwide..."
+        autocomplete="off"
+        aria-label="Search any city worldwide"
+      >
+      <div
+        id="citySuggestions"
+        class="suggestions"
+        role="listbox"
+      ></div>
+    </div>
+  </div>
+
+  <button id="refreshBtn" class="refresh-btn" type="button">
+    ↻ <span>Refresh</span>
+  </button>
+</section>
+
+    <p id="status" class="status" role="status" aria-live="polite">Connecting to weather service...</p>
+
+    <section id="weatherContent" class="weather-content" aria-label="Current weather" hidden>
+      <article class="hero-card">
+        <div class="hero-top">
+          <div>
+            <p class="eyebrow">CURRENT WEATHER</p>
+            <h2 id="cityName">Indore</h2>
+            <p id="currentDate" class="muted"></p>
+          </div>
+          <span id="weatherIcon" class="weather-icon" aria-hidden="true">☀️</span>
+        </div>
+        <div class="temperature-row">
+          <p class="temperature"><span id="temperature">--</span><span class="degree">°C</span></p>
+          <div>
+            <p id="condition" class="condition">Loading...</p>
+            <p class="feels-like">Feels like <span id="feelsLike">--</span>°C</p>
+          </div>
+        </div>
+        <div class="hero-footer">
+          <span>Current conditions</span>
+          <span id="updatedTime">Awaiting data</span>
+        </div>
+      </article>
+
+      <section class="stats-grid" aria-label="Weather details">
+        <article class="stat-card">
+          <div class="stat-heading"><span>Humidity</span><span class="stat-icon">💧</span></div>
+          <p class="stat-value"><span id="humidity">--</span><small>%</small></p>
+          <p class="stat-note">Relative humidity</p>
+          <div class="progress"><span id="humidityBar"></span></div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-heading"><span>Wind speed</span><span class="stat-icon">💨</span></div>
+          <p class="stat-value"><span id="windSpeed">--</span><small> km/h</small></p>
+          <p class="stat-note">Wind at 10 metres</p>
+          <div class="progress"><span id="windBar"></span></div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-heading"><span>Feels like</span><span class="stat-icon">🌡️</span></div>
+          <p class="stat-value"><span id="feelsLikeCard">--</span><small>°C</small></p>
+          <p class="stat-note">Apparent temperature</p>
+        </article>
+        <article class="stat-card">
+          <div class="stat-heading"><span>Wind direction</span><span class="stat-icon">🧭</span></div>
+          <p class="stat-value"><span id="windDirection">--</span><small>°</small></p>
+          <p id="windDirectionText" class="stat-note">Compass direction</p>
+        </article>
+      </section>
+    </section>
+
+    <section id="errorPanel" class="error-panel" hidden>
+      <span class="error-icon">⚠️</span>
+      <h2>Weather unavailable</h2>
+      <p id="errorMessage">We couldn't retrieve weather data. Please try again.</p>
+      <button id="retryBtn" class="retry-btn" type="button">Try again</button>
+    </section>
+
+    <footer class="footer">
+      <p>Made with curiosity &amp; code.</p>
+      <p>Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a></p>
+    </footer>
+  </main>
+</body>
+</html>
